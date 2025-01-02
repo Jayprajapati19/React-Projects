@@ -1,5 +1,11 @@
+import Chai from "./Chai.js";
 function App() {
-  return <h1>chai our code | jay</h1>;
+  return (
+    <>
+      <Chai />
+      <h1>chai our code | jay</h1>
+    </>
+  );
 }
 
 export default App;
