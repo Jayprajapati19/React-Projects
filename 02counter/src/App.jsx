@@ -7,17 +7,23 @@ function App() {
   //  counter ak variable hai jo ki responsible hai set counet function ko update karne me
 
   // let counter= 5;
-
-
-  const addValue=()=>{
-    // counter = counter + 1;      
-    setCounter(counter + 1);
-    // console.log("clicked", counter);
-  }
-
-  const removeValue=()=>{
-    setCounter(counter - 1);
-  }
+  
+  const addValue = () => {
+    if (counter < 20) { // Check if counter is less than 20
+      setCounter(counter + 1);
+    } else {
+      console.log("Counter cannot exceed 20");
+    }
+  };
+  
+  const removeValue = () => {
+    if (counter > 0) { // Check if counter is greater than 0
+      setCounter(counter - 1);
+    } else {
+      console.log("Counter cannot go below 0");
+    }
+  };
+  
 
 
   return (
