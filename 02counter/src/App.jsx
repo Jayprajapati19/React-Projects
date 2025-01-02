@@ -9,11 +9,22 @@ function App() {
   // let counter= 5;
   
   const addValue = () => {
-    if (counter < 20) { // Check if counter is less than 20
-      setCounter(counter + 1);
-    } else {
-      console.log("Counter cannot exceed 20");
-    }
+
+    setCounter((prevCounter)=> prevCounter + 1);
+    setCounter((prevcounter)=> prevcounter + 1);
+    setCounter((prevcounter)=> prevcounter + 1);        
+    setCounter((prevcounter)=> prevcounter + 1);
+    setCounter((prevcounter)=> prevcounter + 1);
+
+
+    // if (counter < 20) { // Check if counter is less than 20
+    //   setCounter(counter + 1);
+
+
+      
+    // } else {
+    //   console.log("Counter cannot exceed 20");
+    // }
   };
   
   const removeValue = () => {
