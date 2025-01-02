@@ -30,3 +30,4 @@ react diffing algorithm means -> do chizo ke bich me diffrene pata karna
 props->component ko banate hai reusabke
 
 
+<!-- 4hr -->
