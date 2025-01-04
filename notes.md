@@ -30,3 +30,14 @@ react diffing algorithm means -> do chizo ke bich me diffrene pata karna
 props->component ko banate hai reusabke
 
 
+props ke under props propes ke under props  data ki need nahi hai lekin age use karna hai isliye pass kar rahe hai   -> prop drilling
+for solve this problem
+contaxt API
+
+------------
+Redux -> state management -data idhar se udhar pass ho raha hai usko ak organiz way me pass karna
+react-Redux, redux-tool-kit(RTK)
+zustand
+
+
+
