@@ -1,48 +1,39 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from "react-router-dom"
-import { login as authLogin } from "../store/authSlice"
+import authService from '../appwrite/auth'
+import { Link, useNavigate } from 'react-router-dom'
+import { login } from '../store/authSlice'
 import { Button, Input, Logo } from "./index"
 import { useDispatch } from 'react-redux'
-import authService from "../appwrite/auth"
-import { useFrom } from "react-hook-form"
+import { useForm } from 'react-hook-form'
 
 
-
-
-
-function Login() {
-
+function Signup() {
     const navigate = useNavigate();
+    const [error, setError] = useState();
     const dispatch = useDispatch();
-    const { register, handleSubmit } = useFrom();
-    //handleSubmit ak keyword hai kyuki ye useFOrm se aya hai..
-    const [error, setError] = useState("");
+    const { register, handleSubmit } = useForm();
 
-    const login = async (data) => {
-        // console.log(data);
+    const create = async (data) => {
         setError("");
         try {
-            const session = await authService.login(data)
-            if (session) {
-                const userData = await authService.getCurrentUser();
-                if (userData) dispatch(authLogin(userData));
-                navigate("/");
-                // root for navigate programitically kahi our bhej diya
+            const userData = await authService.createAccount(data);
+            if (userData) {
+                const userData = await authService.getCurrentUser()
+                if (userData) dispatch(login(userData));
+                navigate('/');
             }
-
         } catch (error) {
             setError(error.message);
         }
+
     }
 
 
-
     return (
-        <div
-            className='flex items-center justify-center w-full'
-        >
+        <div className='flex items-center justify-center '>
             <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-                <div className='mb-2 flex justify-center'>
+
+                <div className='mb-2 felx justify-center'>
                     <span className='inline-block w-full max-w-[100px]'>
                         <Logo width='100%' />
                     </span>
@@ -57,10 +48,20 @@ function Login() {
                         Sign Up
                     </Link>
                 </p>
-                {error && <p className='text-red-500 mt-8 text-center'>{error}</p>}
+                {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
 
-                <form onSubmit={handleSubmit(login)} className='mt-8'>
+                <form
+                    onSubmit={handleSubmit(create)}
+                >
+
                     <div className='space-y-5'>
+                        <Input
+                            label="Full Name: "
+                            placeholder="Enter Your Full Name"
+                            {...register("home", {
+                                required: true,
+                            })}
+                        />
                         <Input
                             label="Email: "
                             placeholder="Enter Your Email! "
@@ -83,19 +84,16 @@ function Login() {
                                 required: true,
                             })}
                         />
-
-                        <Button
-                            type='submit'
+                        <Button type='submit'
                             className='w-full'
-                        >
-                            Sign in</Button>
+                        > Create Account
+                        </Button>
                     </div>
-
                 </form>
-
             </div>
-        </div>
+
+        </div >
     )
 }
 
-export default Login
+export default Signup
