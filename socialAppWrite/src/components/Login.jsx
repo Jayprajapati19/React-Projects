@@ -68,10 +68,14 @@ function Login() {
                                 validate: {
                                     matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
                                         "Email address must be a valid address",
-                                } //this called regex (regular expression)
-
+                                }
+                                //this called regex (regular expression)
                             })}
                         //spred karna jaruri hai kyuki kahi ye register pada honga tohh wha overright ho jayenga
+                        />
+                        <Input
+                            label="Password: "
+                            type="password"
 
                         />
                     </div>
